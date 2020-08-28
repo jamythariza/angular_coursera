@@ -1,10 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { DestinoViaje} from './../models/destino-viaje.model'
-import { DestinosApiClient } from '../models/destinos-api-client.model';
+import { DestinoViaje} from './../../models/destino-viaje.model'
+import { DestinosApiClient } from '../../models/destinos-api-client.model';
 import { Store, State } from '@ngrx/store';
-import { appState } from '../app.module';
+import { appState } from '../../app.module';
 import { ajax } from 'rxjs/ajax';
-import { ElegidoFavoritoAction, NuevoDestinoAction } from '../models/destinos-viajes-state.model';
+import { ElegidoFavoritoAction, NuevoDestinoAction } from '../../models/destinos-viajes-state.model';
 import { isNgTemplate } from '@angular/compiler';
 
 @Component({
