@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DestinoViaje} from './../../models/destino-viaje.model'
 import { DestinosApiClient } from '../../models/destinos-api-client.model';
 import { Store, State } from '@ngrx/store';
-import { appState } from '../../app.module';
+import { AppState } from '../../app.module';
 import { ajax } from 'rxjs/ajax';
 import { ElegidoFavoritoAction, NuevoDestinoAction } from '../../models/destinos-viajes-state.model';
 import { isNgTemplate } from '@angular/compiler';
@@ -10,14 +10,15 @@ import { isNgTemplate } from '@angular/compiler';
 @Component({
   selector: 'app-lista-destinos',
   templateUrl: './lista-destinos.component.html',
-  styleUrls: ['./lista-destinos.component.css']
+  styleUrls: ['./lista-destinos.component.css'],
+  providers: [DestinosApiClient]
 })
 export class ListaDestinosComponent implements OnInit {
   @Output() onItemAdded : EventEmitter<DestinoViaje>;
   updates: string[]
   all;
 
-  constructor(public destinosApiClient:DestinosApiClient, private store: Store<appState>) {
+  constructor(public destinosApiClient:DestinosApiClient, private store: Store<AppState>) {
     this.onItemAdded = new EventEmitter(); 
     this.updates = [];
     this.store.select(state => state.destinos.favorito)
